@@ -7,13 +7,9 @@ const App = () => {
   const ESCAPE_KEY = 27;
   const ENTER_KEY = 13;
 
-  const initialList = [
-    { id: 1, title: "titulo 1", checked: false },
-    { id: 2, title: "titulo 2", checked: true },
-    { id: 3, title: "titulo 3", checked: false },
-  ];
+  const initialList = [];
 
-  const [tasks] = useState(initialList);
+  const [tasks, setTasks] = useState(initialList);
   const [value, setValue] = useState("");
 
   const erase = () => {
@@ -21,7 +17,15 @@ const App = () => {
   };
 
   const submit = () => {
-    console.log("submit", value);
+    // console.log("submit", value);
+    setTasks([
+      ...tasks,
+      {
+        id: new Date().getTime(),
+        title: value,
+        checked: false,
+      },
+    ]);
     erase();
   };
 
