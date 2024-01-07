@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdCheckCircle } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 import "./App.css";
 
@@ -7,9 +7,7 @@ const App = () => {
   const ESCAPE_KEY = 27;
   const ENTER_KEY = 13;
 
-  const initialList = [];
-
-  const [tasks, setTasks] = useState(initialList);
+  const [tasks, setTasks] = useState([]);
   const [value, setValue] = useState("");
 
   const erase = () => {
@@ -41,6 +39,18 @@ const App = () => {
     }
   };
 
+  const onToggle = (task) => {
+    setTasks(
+      tasks.map((obj) =>
+        obj.id === task.id ? { ...obj, checked: !task.checked } : obj
+      )
+    );
+  };
+
+  const onRemove = (task) => {
+    setTasks(tasks.filter((obj) => obj.id !== task.id));
+  };
+
   return (
     <>
       <header className="App-header">
@@ -60,9 +70,19 @@ const App = () => {
         <ul className="MainList">
           {tasks.map((tasks) => (
             <li key={tasks.id.toString()}>
-              <span className="titleList">{tasks.title}</span>
-              <button className="remove" type="button">
-                <MdCheckCircle size={40} />
+              <span
+                className={["titleList", tasks.checked ? "checked" : ""].join(
+                  " "
+                )}
+                onClick={() => onToggle(tasks)}
+                onKeyPress={() => onToggle(tasks)}
+                role="button"
+                tabIndex={0}
+              >
+                {tasks.title}
+              </span>
+              <button className="remove" onClick={() => onRemove(tasks)}>
+                <MdDelete size={40} />
               </button>
             </li>
           ))}

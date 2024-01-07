@@ -54,6 +54,10 @@
   font-weight: 700;
   color: #717171;
 }
+.titleList.checked{
+  color: #bfbfbf ;
+  text-decoration: line-through;
+}
 
 .remove{
   background-color: transparent;
@@ -62,4 +66,7 @@
   outline: none;
   width: 50px;
   color: #ff7675
+}
+.remove.checked{
+  color: green;
 }
