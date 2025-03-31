@@ -1,8 +1,9 @@
-FROM node:22-alpine
+# Estágio de desenvolvimento
+FROM node:18-alpine
 
-WORKDIR /  # Define a raiz como diretório de trabalho
-COPY package*.json ./
-RUN npm install
-COPY . .
+WORKDIR /src              # Define o diretório de trabalho como /src
+COPY package*.json ./     # Copia os arquivos de dependência
+RUN npm install           # Instala as dependências
+COPY . .                  # Copia todo o conteúdo da pasta local "src" para /src
 
-CMD ["npm", "start"]
+CMD ["npm", "start"]      # Inicia a aplicação
