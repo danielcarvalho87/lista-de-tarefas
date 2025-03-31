@@ -1,7 +1,6 @@
-# Estágio de construção (development/build)
-FROM node:22-alpine as builder
+FROM node:22-alpine
 
-WORKDIR /
+WORKDIR /  # Define a raiz como diretório de trabalho
 COPY package*.json ./
 RUN npm install
 COPY . .
