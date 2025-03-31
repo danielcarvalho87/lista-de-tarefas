@@ -2,14 +2,16 @@ version: '3.8'
 
 services:
   react-app:
-    container_name: my-react-app
+    container_name: lista-de-tarefas
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
     ports:
-      - "20333:3000"
+      - "20200:3000"
     volumes:
-      - ./src:/src       # Mapeia a pasta local "src" para "/src" no container
-      - /src/node_modules  # Isola as dependências
+      - ./:/app
+      - /app/node_modules
     environment:
       - NODE_ENV=development
