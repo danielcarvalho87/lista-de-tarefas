@@ -6,12 +6,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - NODE_ENV=development
     ports:
       - "3000:3000"
     volumes:
-      - ./
-      - /node_modules
+      - ./:/  # Mapeia o diretório atual para a raiz do container
+      - /node_modules  # Isola node_modules na raiz
     environment:
       - NODE_ENV=development
