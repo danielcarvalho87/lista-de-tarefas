@@ -11,7 +11,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./:/
+      - ./
       - /node_modules
     environment:
       - NODE_ENV=development
