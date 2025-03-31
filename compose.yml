@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "20333:3000"
     volumes:
       - ./:/  # Mapeia o diretório atual para a raiz do container
       - /node_modules  # Isola node_modules na raiz
